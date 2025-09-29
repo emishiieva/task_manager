@@ -27,6 +27,12 @@ cd task_manager
 
 #### frontend/.env
 
+### For Docker (frontend container connecting to backend via host port)
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+### For local development (frontend running locally, backend in its container)
 ```env
 VITE_API_BASE_URL=http://backend:8000
 ```
@@ -51,6 +57,14 @@ docker-compose up --build
 
 ---
 
+### 4. Create tables
+
+```bash
+docker-compose exec backend python create_tables.py
+```
+
+---
+
 ## Useful Commands
 
 ### Rebuild the project
@@ -65,17 +79,11 @@ docker-compose up --build
 docker-compose down
 ```
 
-### Apply database migrations (Alembic)
-
-```bash
-docker-compose exec backend alembic upgrade head
-```
-
 ---
 
 ## API Docs
 
 Once running, API documentation is available at:
-👉 [http://localhost:8000/docs](http://localhost:8000/docs)
+ [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
